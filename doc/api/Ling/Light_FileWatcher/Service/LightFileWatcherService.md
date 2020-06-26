@@ -4,7 +4,7 @@
 
 The LightFileWatcherService class
 ================
-2020-06-25 --> 2020-06-25
+2020-06-25 --> 2020-06-26
 
 
 
@@ -61,7 +61,11 @@ Properties
 
 - <span id="property-callables"><b>callables</b></span>
 
-    This property holds the files2Callables for this instance.
+    This property holds the callables and paths information.
+    It's an array of items, each of which:
+    
+    - 0: path
+    - 1: callable
     
     
 

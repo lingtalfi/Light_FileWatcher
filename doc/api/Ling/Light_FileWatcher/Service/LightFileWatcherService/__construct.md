@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightFileWatcherService::__construct](https://github.com/lingtalfi/Light_FileWatcher/blob/master/Service/LightFileWatcherService.php#L70-L77)
+See the source code for method [LightFileWatcherService::__construct](https://github.com/lingtalfi/Light_FileWatcher/blob/master/Service/LightFileWatcherService.php#L76-L83)
 
 
 See Also

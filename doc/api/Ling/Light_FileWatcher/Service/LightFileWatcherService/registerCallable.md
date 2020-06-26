@@ -53,7 +53,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightFileWatcherService::registerCallable](https://github.com/lingtalfi/Light_FileWatcher/blob/master/Service/LightFileWatcherService.php#L136-L139)
+See the source code for method [LightFileWatcherService::registerCallable](https://github.com/lingtalfi/Light_FileWatcher/blob/master/Service/LightFileWatcherService.php#L142-L145)
 
 
 See Also

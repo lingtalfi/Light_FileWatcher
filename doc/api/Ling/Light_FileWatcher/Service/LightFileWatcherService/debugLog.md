@@ -49,7 +49,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightFileWatcherService::debugLog](https://github.com/lingtalfi/Light_FileWatcher/blob/master/Service/LightFileWatcherService.php#L235-L245)
+See the source code for method [LightFileWatcherService::debugLog](https://github.com/lingtalfi/Light_FileWatcher/blob/master/Service/LightFileWatcherService.php#L250-L260)
 
 
 See Also

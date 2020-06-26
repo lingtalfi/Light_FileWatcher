@@ -53,7 +53,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LightFileWatcherService::monitorFiles](https://github.com/lingtalfi/Light_FileWatcher/blob/master/Service/LightFileWatcherService.php#L168-L228)
+See the source code for method [LightFileWatcherService::monitorFiles](https://github.com/lingtalfi/Light_FileWatcher/blob/master/Service/LightFileWatcherService.php#L175-L243)
 
 
 See Also

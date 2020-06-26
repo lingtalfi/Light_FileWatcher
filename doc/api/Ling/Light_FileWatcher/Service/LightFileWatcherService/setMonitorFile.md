@@ -49,7 +49,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightFileWatcherService::setMonitorFile](https://github.com/lingtalfi/Light_FileWatcher/blob/master/Service/LightFileWatcherService.php#L104-L107)
+See the source code for method [LightFileWatcherService::setMonitorFile](https://github.com/lingtalfi/Light_FileWatcher/blob/master/Service/LightFileWatcherService.php#L110-L113)
 
 
 See Also

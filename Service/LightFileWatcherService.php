@@ -26,7 +26,13 @@ class LightFileWatcherService
 
 
     /**
-     * This property holds the files2Callables for this instance.
+     * This property holds the callables and paths information.
+     * It's an array of items, each of which:
+     *
+     * - 0: path
+     * - 1: callable
+     *
+     *
      * @var array
      */
     protected $callables;
@@ -135,7 +141,7 @@ class LightFileWatcherService
      */
     public function registerCallable(string $path, callable $fn)
     {
-        $this->callables[$path] = $fn;
+        $this->callables[] = [$path, $fn];
     }
 
 
@@ -148,7 +154,8 @@ class LightFileWatcherService
     protected function createMonitorFile()
     {
         $path2Hash = [];
-        foreach ($this->callables as $path => $fn) {
+        foreach ($this->callables as $item) {
+            $path = $item[0];
             $hash = $this->getHash($path);
             $path2Hash[$path] = $hash;
         }
@@ -175,12 +182,14 @@ class LightFileWatcherService
 
         if (file_exists($monitorFile)) {
 
-
             $path2Hash = BabyYamlUtil::readFile($monitorFile);
             $newPath2Hash = [];
 
 
-            foreach ($this->callables as $path => $fn) {
+            foreach ($this->callables as $item) {
+
+                list($path, $fn) = $item;
+
                 //--------------------------------------------
                 // new hash
                 //--------------------------------------------
@@ -194,23 +203,29 @@ class LightFileWatcherService
                 //--------------------------------------------
                 // comparing hashes
                 //--------------------------------------------
-                if (array_key_exists($path, $path2Hash)) {
-                    $oldHash = $path2Hash[$path];
-                    if ($hash !== $oldHash) {
-                        $this->debugLog("Change detected for path: $path, triggering callback");
-                        call_user_func($fn);
+                foreach ($path2Hash as $oldPath => $oldHash) {
 
+                    /**
+                     * Note: I found a bug when trying to compare oldPath and path without realpath.
+                     * https://bugs.php.net/bug.php?id=79739
+                     */
+                    if (realpath($path) === realpath($oldPath)) {
+                        $oldHash = $path2Hash[$oldPath];
+                        if ($hash !== $oldHash) {
+                            $this->debugLog("Change detected for path: $path, triggering callback");
+                            call_user_func($fn);
+
+                        } else {
+                            $this->debugLog("No change detected for path: $path.");
+                        }
+
+                        $newPath2Hash[$path] = $hash;
                     } else {
-                        $this->debugLog("No change detected for path: $path.");
+                        $msg = "Path not found in the monitor file, cannot compare hashes (path=$path).";
+                        $this->debugLog($msg);
+                        $this->error($msg);
                     }
 
-                    $newPath2Hash[$path] = $hash;
-
-
-                } else {
-                    $msg = "Path not found in the monitor file, cannot compare hashes (path=$path).";
-                    $this->debugLog($msg);
-                    $this->error($msg);
                 }
             }
 

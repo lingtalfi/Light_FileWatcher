@@ -1,6 +1,6 @@
 Light_FileWatcher
 ===========
-2020-06-25
+2020-06-25 -> 2020-06-26
 
 
 
@@ -90,6 +90,10 @@ $logger.methods_collection:
 History Log
 =============
 
+- 1.1.0 -- 2020-06-26
+
+    - update service to accommodate bug with __DIR__
+    
 - 1.0.0 -- 2020-06-25
 
     - initial commit
