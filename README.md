@@ -1,6 +1,6 @@
 Light_FileWatcher
 ===========
-2020-06-25 -> 2021-06-25
+2020-06-25 -> 2021-06-28
 
 
 
@@ -80,6 +80,10 @@ $events.methods_collection:
 History Log
 =============
 
+- 1.1.9 -- 2021-06-28
+
+    - fix api wrong reference to Ling.Light_Logger
+  
 - 1.1.8 -- 2021-06-25
 
     - update api, now use Ling.Light_Logger open registration system
